@@ -1,0 +1,100 @@
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>HaHaHa</title>
+</head>
+<body>
+
+  <script type="text/javascript" src="https://cats.petiteweb.dev/simple/assets/cats.js">
+
+  </script>
+
+<script>
+
+ function setImg(link) {
+  var url = link;
+  var img = document.createElement('img');
+  img.src = url;
+  img.style.width = '250px';
+  return img;
+};
+
+const tbl = document.createElement("table");
+const tblBody = document.createElement("tbody");
+
+//header
+const row = document.createElement("tr");
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Index')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Name')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Description')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Age')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Favourite')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Rate')); row.appendChild(cell);
+var cell = document.createElement("td"); cell.appendChild(document.createTextNode('Photo')); row.appendChild(cell);
+tblBody.appendChild(row);
+
+//content
+cats.forEach(element => {
+
+  const row = document.createElement("tr");
+  var k = 0
+
+  for (let j = 0; j < 7; j++) {
+    var cell = document.createElement("td");
+    cell.style.width = '200px';
+    var l = ''
+    switch (j) {
+        case 0:
+         l = element.id;
+          break;
+        case 1:
+         l = element.name;
+          break;
+        case 2:
+         l = element.description;
+         cell.style.width = '600px';
+          break;
+        case 3:
+         l = element.age;
+         cell.style.textAlign = 'center';
+          break;
+        case 4:
+         l = element.favourite;
+         cell.style.textAlign = 'center';
+          break;
+        case 5:
+         l = element.rate;
+         cell.style.textAlign = 'center';
+          break;
+        case 6:
+         var img1 = setImg(element.img_link);
+         k = 1
+    }
+  
+    if (k == 0)
+    {
+    const cellText = document.createTextNode(l);
+    cell.appendChild(cellText);
+    }
+    else
+    {
+      cell.appendChild(img1);
+    }
+    row.appendChild(cell);
+}
+
+  tblBody.appendChild(row);
+
+});
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  document.body.appendChild(tbl);
+  // sets the border attribute of tbl to '2'
+  tbl.setAttribute("border", "2");
+
+
+ </script>
+</body>
+</html>
