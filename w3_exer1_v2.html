@@ -1,0 +1,49 @@
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>HaHaHa</title>
+
+ <style type="text/css">
+  .range {
+    width: 320px;
+    height: 50px;
+    border: 1px solid #8c1d1d;
+    position: relative;
+  }
+
+  .range > input[type="range"]{
+    position: absolute;
+    bottom: 0;
+  }
+
+  .range > .range-num{
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+  }
+  .number{
+    width: 300px;
+    left: 7px;
+  }
+ </style>
+</head>
+
+<body>
+        <div class="range">
+            <div class="range-num"></div>
+            <input type="range" class="number" min="0" max="300" value="0">
+        </div>
+
+    <script>
+        let range = document.querySelector('.number');
+        let rangeNum = document.querySelector('.range-num');
+        rangeNum.innerHTML = 0;
+        range.oninput = function () {
+        rangeNum.style.left = this.value -10*this.value*0.005  + 'px';
+        rangeNum.innerHTML = this.value;
+        }
+    </script>
+</body>
+</html>
